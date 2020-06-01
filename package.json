@@ -1,7 +1,7 @@
 {
-  "name": "parcel-plugin-goodie-bag",
-  "version": "2.0.0",
-  "description": "a polyfill for `Promise` and `fetch` to keep Parcel working for those without it",
+  "name": "parcel-plugin-ie-polyfills",
+  "version": "1.0.0",
+  "description": "Forked polyfill for `Promise` and `fetch` to keep Parcel working for those without it",
   "main": "index.js",
   "files": [
     "index.js"
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/edm00se/parcel-plugin-goodie-bag.git"
+    "url": "git+https://github.com/linkqwd/parcel-plugin-goodie-bag.git"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -23,5 +23,9 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.7.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/linkqwd/parcel-plugin-goodie-bag/issues"
+  },
+  "homepage": "https://github.com/linkqwd/parcel-plugin-goodie-bag#readme"
 }

@@ -1,6 +1,6 @@
 # parcel-plugin-goodie-bag
 
-A polyfill for `Promise` and `fetch` to keep Parcel working for those without it.
+A forked polyfill for `Promise` and `fetch` to keep Parcel working for those without it.
 
 [Looking at you Internet Explorer](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/The-perils-of-using-Internet-Explorer-as-your-default-browser/ba-p/331732).
 
@@ -21,6 +21,7 @@ No additional configuration required. If your app is being bundled by parcel and
 - the `*.html` containing a `script` tag in its head pointing to the "goodie bag` script (the two polyfills)
 - a "goodie bag" script file, placed in the destination directory (`outDir` to parcel, defaults to `dist`)
 - the script tag will respect your configured `publicUrl` option with Parcel (e.g.- prefixed with default `/` or no root slash in the case of `.`)
+- by passing `process.env.ROOT_PUBLIC_URL` in parcel cofig file it is possible to specify absolute path to the polyfill file
 
 Note: If you're not processing your `index.html` file through parcel, for example merely bundling the JS directly, I believe you're missing out on some of the super powers of parcel. However, if that's your workflow and you're missing out on this plugin's functionality, please consult the discussion and resolution outlined [in this issue][non-html-support].
 

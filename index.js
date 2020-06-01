@@ -27,7 +27,7 @@ module.exports = function(bundler) {
     }
 
     if (bund.childBundles && bund.childBundles.size) {
-      for (let childBund of bund.childBundles) {
+      for (const childBund of bund.childBundles) {
         if (childBund.type === 'html') {
           injectGoodies(childBund)
         }
@@ -39,9 +39,11 @@ module.exports = function(bundler) {
 function injectGoodies(bund) {
   const filePath = bund.name;
   const bundlePublicUrl = bund.entryAsset.options.publicURL;
+  const bundleRootUrl = bund.entryAsset.options.env.ROOT_PUBLIC_URL;
   const finalResolvedGoodieBagDestination = resolveGoodieBagPath(
-    bundlePublicUrl
+    bundlePublicUrl, bundleRootUrl
   );
+  console.log(finalResolvedGoodieBagDestination)
   const bundleDir = path.dirname(bund.name);
   const content = fs.readFileSync(filePath, 'utf8');
   const $ = cheerio.load(content);
@@ -73,9 +75,9 @@ function copyGoodiesToDist(outDir) {
   fs.writeFileSync(path.join(outDir, goodieBagFileName), polyFileContent);
 }
 
-function resolveGoodieBagPath(bundlePublicUrl) {
+function resolveGoodieBagPath(bundlePublicUrl, bundleRootUrl) {
   const url = URL.parse(bundlePublicUrl, false, true);
   const assetUrl = URL.parse(goodieBagFileName);
   url.pathname = path.posix.join(url.pathname, assetUrl.pathname);
-  return URL.format(url);
+  return bundleRootUrl ? bundleRootUrl + URL.format(url) : URL.format(url);
 }
